@@ -1,0 +1,55 @@
+.container {
+  color: white;
+  background-color: #11161c;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem 1rem 2rem;
+  min-height: 100px;
+  border: 1px solid #cccccc6b;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.nameAndRaven {
+  margin-left: 1rem;
+
+  >:nth-child(2) {
+    margin-top: 1rem;
+  }
+}
+
+.username {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.raven {}
+
+.date {
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-left: 0.5rem;
+}
+
+.buttonBar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-left: 7rem;
+  max-width: 350px;
+}
+
+.actionButton {
+  stroke: 0.5rem;
+  color: white;
+  height: 25px;
+  width: 25px;
+}
+
+.contentContainer {
+  display: flex;
+}

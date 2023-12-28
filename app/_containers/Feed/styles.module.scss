@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  >:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
