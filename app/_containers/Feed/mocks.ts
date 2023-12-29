@@ -1,0 +1,67 @@
+export const mockFeed = {
+  messages: [
+    {
+      id: 1,
+      content: "This is a raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "/img/wiz_avatar.png",
+    },
+    {
+      id: 2,
+      content: "This is another raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "https://i.pravatar.cc/300",
+    },
+    {
+      id: 3,
+      content: "This is a third raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "https://i.pravatar.cc/300",
+    },
+    {
+      id: 4,
+      content: "This is a third raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "https://i.pravatar.cc/300",
+    },
+    {
+      id: 5,
+      content: "This is a third raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "https://i.pravatar.cc/300",
+    },
+    {
+      id: 6,
+      content: "This is a third raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "https://i.pravatar.cc/300",
+    },
+    {
+      id: 7,
+      content: "This is a third raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "https://i.pravatar.cc/300",
+    },
+    {
+      id: 8,
+      content: "This is a third raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "https://i.pravatar.cc/300",
+    },
+    {
+      id: 9,
+      content: "This is a third raven",
+      username: "Jon Snow",
+      date: "2 hours ago",
+      userAvatar: "https://i.pravatar.cc/300",
+    },
+  ],
+};

@@ -6,5 +6,5 @@ export default {
 };
 
 export const Default = {
-  render: () => <Input />,
+  render: () => <Input userAvatar="./img/wiz_avatar.png" />,
 }
