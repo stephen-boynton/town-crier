@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 3fr 2fr;
   color: white;
 
   >:not(:last-child) {
@@ -20,12 +20,16 @@
 
 .centerColumn {
   > :nth-child(2) {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
 .rightColumn {
-  background-color: #11161c;
+  padding: 1rem;
+
+  > :not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }
 
 .textArea {

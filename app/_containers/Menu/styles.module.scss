@@ -1,0 +1,36 @@
+.container {
+  padding: 1rem 2rem;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+  background-size: contain;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  filter: invert(100%);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.menu {
+  padding: 0;
+  list-style: none;
+
+  li {
+    font-size: 1.2rem;
+  }
+
+  >:first-child {
+    color: rgb(80, 167, 83);
+    text-decoration: underline;
+  }
+
+  >:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
