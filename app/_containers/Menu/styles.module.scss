@@ -25,6 +25,16 @@
     font-size: 1.2rem;
   }
 
+  a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: rgb(80, 167, 83);
+    }
+  }
+
   >:first-child {
     color: rgb(80, 167, 83);
     text-decoration: underline;

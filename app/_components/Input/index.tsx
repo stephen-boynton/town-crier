@@ -1,3 +1,4 @@
+"use client"
 import { useChatGpt } from "@/app/_hooks/useChatGpt";
 import { useEffect, useState } from "react";
 import { Response } from "@/app/_components/response";

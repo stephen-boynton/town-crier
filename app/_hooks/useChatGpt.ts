@@ -10,9 +10,10 @@ export const useChatGpt = () => {
   const getResponse = async (input: string) => {
     try {
       setLoading(true)
-      const res = await fetch('http://localhost:3000/raven', { method: 'POST', body: JSON.stringify({ conversation: input }) })
+      const res = await fetch('http://localhost:3000/raven', {
+        method: 'POST', body: JSON.stringify({ conversation: input })
+      })
       const data = await res.json()
-      console.log({ data });
       setResponse(data.result)
       setLoading(false)
     } catch (error: any) {
