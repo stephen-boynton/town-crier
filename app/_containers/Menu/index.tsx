@@ -21,9 +21,9 @@ export const Menu = ({ firstName, email, isAuthenticated, setUserUnauthenticated
   return (
     <div className={styles.container}>
       <img className={styles.logo} src="./img/raven_logo.png" />
-      {email && (
+      {firstName && (
         <p className={styles.name}>
-          Welcome, {email}!
+          Welcome, {firstName}!
         </p>
       )}
       <ul className={styles.menu}>

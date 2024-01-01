@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { Selector } from '../_components/Select';
 import { useRouter } from 'next/navigation';
+import { ARCHETYPE } from '../_types';
 
 export default function SignUp({
   searchParams,
@@ -14,6 +15,8 @@ export default function SignUp({
   const [handle, setHandle] = useState('');
   const [username, setUsername] = useState('');
   const [archetype, setArchetype] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const router = useRouter();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +35,16 @@ export default function SignUp({
     setUsername(e.target.value);
   };
 
-  const handleArchetypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setArchetype(e.target.value);
+  const handleArchetypeChange = (archetype: ARCHETYPE) => {
+    setArchetype(archetype);
+  };
+
+  const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFirstName(e.target.value);
+  };
+
+  const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLastName(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,7 +54,7 @@ export default function SignUp({
       credentials: 'include',
       method: 'POST',
       body: JSON.stringify({
-        email, password, archetype, handle, username
+        email, password, archetype, handle, username, firstName, lastName
       })
     })
       .then((res) => {
@@ -67,9 +78,19 @@ export default function SignUp({
             Raven Sign-Up
           </h1>
         </div>
+        <div className={styles.name}>
+          <label className={styles.label}>
+            First Name:
+            <input className={styles.input} type="text" value={firstName} onChange={handleFirstNameChange} />
+          </label>
+          <label className={styles.label}>
+            Last Name:
+            <input className={styles.input} type="text" value={lastName} onChange={handleLastNameChange} />
+          </label>
+        </div>
         <label className={styles.label}>
           Email:
-          <input className={styles.input} type="email" value={email} onChange={handleEmailChange} />
+          <input className={styles.input} type="text" value={email} onChange={handleEmailChange} />
         </label>
         <br />
         <label className={styles.label}>

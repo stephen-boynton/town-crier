@@ -5,7 +5,7 @@ const openai = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
 
-export async function POST(req, res) {
+export async function POST(req: Request) {
   const { conversation } = await req.json();
 
   try {

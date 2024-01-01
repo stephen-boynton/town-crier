@@ -1,6 +1,8 @@
+import { initializeDb } from '@/app/_db'
+import { user } from '@/app/_models/schema'
 import { createClient } from '@/utils/supabase/server'
 import { cookies, headers } from "next/headers"
-import { redirect } from 'next/navigation'
+import { v4 as uuidv4 } from 'uuid'
 
 export async function POST(request: Request) {
   const {
@@ -16,6 +18,7 @@ export async function POST(request: Request) {
   const cookieStore = cookies()
 
   try {
+    const db = await initializeDb();
     const supabase = createClient(cookieStore)
     const { error: userError, data: userData } = await supabase.auth.signUp({
       email,
@@ -25,21 +28,22 @@ export async function POST(request: Request) {
       },
     })
 
-    const { error: profileError, data: profileData, status, statusText } = await supabase.from('users').insert({
-      user_id: userData?.user?.id,
+    const results = await db.insert(user).values({
+      id: uuidv4(),
+      firstName,
+      lastName,
       handle,
-      account_name: username,
-      first_name: firstName,
-      last_name: lastName,
+      accountName: username,
+      userId: userData?.user?.id,
       archetype,
-    })
+    });
 
-    if (userData.user && status >= 200 && status < 300) {
-      return Response.json({ message: 'created' }, { status: 200 })
-    } else if (userError || profileError) {
-      throw new Error(userError?.message || profileError?.message)
-    }
+    const data = results
+
+    console.log({ userData, data })
+    return Response.json({ message: 'created' }, { status: 200 })
   } catch (error) {
+    console.error(error);
     return Response.json({ error }, { status: 500 })
   }
 }

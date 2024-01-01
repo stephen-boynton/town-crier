@@ -1,27 +1,37 @@
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { initializeDb } from "../_db";
+import { user } from "../_models/schema";
+import { eq } from "drizzle-orm";
 
 export async function GET() {
   try {
+    const db = await initializeDb();
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
 
     const { data } = await supabase.auth.getUser();
-    const { data: accountData } = await supabase.from('user').select('*');
+
+    if (!data.user) throw new Error('User not found');
+
+    const result = await db.select().from(user)
+      .where(eq(user.userId, data.user.id));
+
+    const accountData = result[0];
 
     if (data.user && accountData) {
       const { user } = data;
-      const { handle, account_name, first_name, last_name, archetype, id } = accountData;
+      const { handle, accountName, firstName, lastName, archetype, id } = accountData;
 
       return NextResponse.json({
         user: {
           email: user.email,
           id,
           handle,
-          username: account_name,
-          firstName: first_name,
-          lastName: last_name,
+          username: accountName,
+          firstName,
+          lastName,
           archetype,
         }
       },
