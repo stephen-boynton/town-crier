@@ -1,5 +1,5 @@
 "use client"
-import { AuthProvider } from './_contexts/auth'
+import { UserProvider } from './_contexts/user'
 import './globals.css'
 
 // const defaultUrl = process.env.VERCEL_URL
@@ -20,11 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
-        <AuthProvider>
+        <UserProvider>
           <main>
             {children}
           </main>
-        </AuthProvider>
+        </UserProvider>
       </body>
     </html>
   )

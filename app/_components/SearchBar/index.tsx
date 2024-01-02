@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
 
-interface SearchBarProps {
+type SearchBarProps = {
   onSearch: (query: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+export function SearchBar({ onSearch }: SearchBarProps) {
   const [query, setQuery] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,8 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
-import { ARCHETYPE } from '../_types';
+import { ARCHETYPE } from '../../_types';
 
-interface AuthContextProps {
+export type UserContextProps = {
   email: string | null,
   id: string | null,
   handle: string | null,
@@ -15,7 +14,7 @@ interface AuthContextProps {
   setUserAuthenticated: () => void,
 }
 
-export const AuthContext = createContext<AuthContextProps>({
+export const UserContext = createContext<UserContextProps>({
   username: null,
   email: null,
   handle: null,
@@ -28,7 +27,7 @@ export const AuthContext = createContext<AuthContextProps>({
   setUserAuthenticated: () => { },
 });
 
-export const AuthProvider: React.FC = ({ children }) => {
+export function UserProvider({ children }: { children: React.ReactNode }) {
   const [username, setUsername] = useState<string | null>(null);
   const [email, setEmail] = useState<string | null>(null);
   const [handle, setHandle] = useState<string | null>(null);
@@ -83,7 +82,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [isAuthenticated]);
 
   return (
-    <AuthContext.Provider value={{
+    <UserContext.Provider value={{
       isAuthenticated,
       email,
       id,
@@ -96,6 +95,6 @@ export const AuthProvider: React.FC = ({ children }) => {
       setUserAuthenticated,
     }}>
       {children}
-    </AuthContext.Provider>
+    </UserContext.Provider>
   );
 };

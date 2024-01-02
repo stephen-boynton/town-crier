@@ -2,7 +2,7 @@ import React from 'react';
 import { Raven, RavenProps } from '../Raven';
 import styles from './styles.module.scss';
 
-interface FeedProps {
+export type FeedProps = {
   messages: RavenProps[];
 }
 

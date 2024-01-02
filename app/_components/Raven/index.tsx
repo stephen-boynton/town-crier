@@ -1,10 +1,10 @@
 import { IconButton } from '@/app/_components/IconButton'
 import styles from './styles.module.scss'
-import { ArrowRightIcon, HeartIcon, ResetIcon, Share1Icon } from '@radix-ui/react-icons'
 
 export type RavenProps = {
   content: string
   username: string
+  userId: string
   date: string
   userAvatar: string
   id: string
@@ -27,18 +27,10 @@ export function Raven({ content, userAvatar, username, date }: RavenProps) {
         </div>
       </div>
       <div className={styles.buttonBar}>
-        <IconButton>
-          <HeartIcon className={styles.actionButton} />
-        </IconButton>
-        <IconButton>
-          <ResetIcon className={styles.actionButton} />
-        </IconButton>
-        <IconButton>
-          <Share1Icon className={styles.actionButton} />
-        </IconButton>
-        <IconButton>
-          <ArrowRightIcon className={styles.actionButton} />
-        </IconButton>
+        <IconButton onClick={() => { }} icon="HeartIcon" className={styles.actionButton} />
+        <IconButton onClick={() => { }} icon="ResetIcon" className={styles.actionButton} />
+        <IconButton onClick={() => { }} icon="Share1Icon" className={styles.actionButton} />
+        <IconButton onClick={() => { }} icon="ArrowRightIcon" className={styles.actionButton} />
       </div>
     </section>
   )

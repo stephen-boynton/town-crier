@@ -1,13 +1,14 @@
 "use client"
-import { useChatGpt } from "@/app/_hooks/useChatGpt";
-import { useEffect, useState } from "react";
-import { Response } from "@/app/_components/response";
+import { useState } from "react";
 import { IconButton } from "../IconButton";
-import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import styles from './styles.module.scss';
-import withAuth from "@/app/_wrappers/withAuth";
+import withUser from "@/app/_wrappers/withUser";
 
-export function Input({ userAvatar }) {
+type InputProps = {
+  userAvatar: string;
+}
+
+export function Input({ userAvatar }: InputProps) {
   const [input, setInput] = useState('');
   const [charNumber, setCharNumber] = useState(0);
 
@@ -31,12 +32,10 @@ export function Input({ userAvatar }) {
       </div>
       <div className={styles.actionBar}>
         <div className={styles.charCounter}>{charNumber}/140</div>
-        <IconButton>
-          <PaperPlaneIcon className={styles.icon} />
-        </IconButton>
+        <IconButton onClick={onClick} icon="PaperPlaneIcon" className={styles.icon} />
       </div>
     </div>
   )
 }
 
-export const InputWithUser = withAuth(Input);
+export const InputWithUser = withUser(Input);

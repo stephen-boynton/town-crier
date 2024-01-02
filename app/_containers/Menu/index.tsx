@@ -1,23 +1,16 @@
 "use client"
 import Link from 'next/link';
 import styles from './styles.module.scss';
-import withAuth from '@/app/_wrappers/withAuth';
+import withUser from '@/app/_wrappers/withUser';
+import { UserContextProps } from '@/app/_contexts/user';
 
-export const Menu = ({ firstName, email, isAuthenticated, setUserUnauthenticated }) => {
-  const handleSignout = () => {
-    fetch('/signout', {
-      credentials: 'include',
-      method: 'POST',
-    }).then((resp) => {
-      if (resp.ok) {
-        return setUserUnauthenticated();
-      }
+type MenuProps = {
+  handleSignout: () => void;
+  user: Partial<UserContextProps>;
+}
 
-      throw new Error('Failed to sign out');
-    }).catch((err) => {
-      console.error(err);
-    })
-  }
+export function Menu({ handleSignout, user: { firstName, isAuthenticated, setUserUnauthenticated } = {} }: MenuProps) {
+
   return (
     <div className={styles.container}>
       <img className={styles.logo} src="./img/raven_logo.png" />
@@ -52,4 +45,4 @@ export const Menu = ({ firstName, email, isAuthenticated, setUserUnauthenticated
   );
 }
 
-export const MenuWithAuth = withAuth(Menu);
+export const MenuWithAuth = withUser(Menu);
